@@ -7,7 +7,9 @@ export const App = () => {
   useEffect(() => {
     console.log(firstInputRef)
     console.log(firstInputRef.current)
-  })
+    let secondInput = document.querySelector('#secondInput')
+    secondInput.placeholder = 'Введите ваше имя'
+  }, [])
 
   const setFocusOnFirstInput = event => {
     if (event.key === 'Tab') {
@@ -21,9 +23,9 @@ export const App = () => {
   }
 
   return (
-    <form>
+    <form name="main">
       <input type="text" ref={firstInputRef} autoFocus />
-      <input type="text" ref={secondInputRef} />
+      <input type="text" ref={secondInputRef} id="secondInput" />
       <input type="text" onKeyDown={setFocusOnFirstInput} />
       <button type="button" onClick={changeColorBorder}>Change color border for second input</button>
     </form>
